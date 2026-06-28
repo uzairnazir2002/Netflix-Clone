@@ -121,8 +121,22 @@ const App = () => {
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/cookie-preferences" element={<CookiePreferences />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/feedback" element={<Feedback />} />
+        <Route 
+          path="/contact-us" 
+          element={
+            <ProtectedRoute user={user}>
+              <ContactUs />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/feedback" 
+          element={
+            <ProtectedRoute user={user}>
+              <Feedback />
+            </ProtectedRoute>
+          } 
+        />
         <Route path="/jobs" element={<Jobs />} />
       </Routes>
     </div>

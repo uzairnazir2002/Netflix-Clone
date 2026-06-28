@@ -65,6 +65,11 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!auth.currentUser) {
+      toast.error("Please sign in first so the message can be stored in Firestore.");
+      return;
+    }
+
     if (!isRequiredText(formData.name) || !isRequiredText(formData.email) || !isRequiredText(formData.message)) {
       toast.error("Please fill in all required fields");
       return;
