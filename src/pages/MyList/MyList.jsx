@@ -6,6 +6,11 @@ import { toast } from "react-toastify";
 import { auth } from "../../firebase";
 import { firestoreService } from "../../services/firestoreService";
 
+const getPosterUrl = (item) => {
+  const posterPath = item.posterPath || item.imagePath || item.backdropPath || "";
+  return posterPath ? `https://image.tmdb.org/t/p/w342${posterPath}` : null;
+};
+
 const statusOptions = ["Plan to Watch", "Watching", "Completed"];
 
 const MyList = ({ user }) => {
@@ -158,11 +163,17 @@ const MyList = ({ user }) => {
           <div className="watchlist-grid">
             {watchlist.map((item) => (
               <div key={item.movieId} className="watchlist-item">
-                <img
-                  src={item.posterPath ? `https://image.tmdb.org/t/p/w342${item.posterPath}` : "/placeholder-image.png"}
-                  alt={item.title}
-                  className="watchlist-poster"
-                />
+                {getPosterUrl(item) ? (
+                  <img
+                    src={getPosterUrl(item)}
+                    alt={item.title}
+                    className="watchlist-poster"
+                  />
+                ) : (
+                  <div className="watchlist-placeholder" aria-hidden="true">
+                    <span>No poster</span>
+                  </div>
+                )}
                 <div className="watchlist-info">
                   <h3>{item.title}</h3>
                   <p className="release-date">{item.releaseDate}</p>

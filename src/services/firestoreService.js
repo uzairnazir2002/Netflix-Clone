@@ -139,7 +139,7 @@ class FirestoreService {
       userId,
       movieId: item.id,
       title: item.title,
-      posterPath: item.posterPath || "",
+      posterPath: item.posterPath || item.imagePath || item.backdropPath || "",
       releaseDate: item.releaseDate || "Unknown",
       mediaType: item.mediaType || "movie",
       status: item.status || "Plan to Watch",
