@@ -5,8 +5,10 @@ import {
   doc,
   getDoc,
   getDocs,
+  query,
   serverTimestamp,
   setDoc,
+  where,
   updateDoc,
 } from "firebase/firestore";
 import { auth, db } from "../firebase";
@@ -71,8 +73,9 @@ class FirestoreService {
 
   async getContactMessages(uid = getCurrentUser()?.uid) {
     if (!uid) return [];
-    const snapshot = await getDocs(collection(db, "contactMessages"));
-    return snapshot.docs.map(mapDoc).filter((item) => item.userId === uid).sort(
+    const q = query(collection(db, "contactMessages"), where("userId", "==", uid));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(mapDoc).sort(
       (a, b) => {
         const aTime = a.createdAt?.seconds || 0;
         const bTime = b.createdAt?.seconds || 0;
@@ -107,8 +110,9 @@ class FirestoreService {
 
   async getFeedback(uid = getCurrentUser()?.uid) {
     if (!uid) return [];
-    const snapshot = await getDocs(collection(db, "feedback"));
-    return snapshot.docs.map(mapDoc).filter((item) => item.userId === uid).sort(
+    const q = query(collection(db, "feedback"), where("userId", "==", uid));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(mapDoc).sort(
       (a, b) => {
         const aTime = a.createdAt?.seconds || 0;
         const bTime = b.createdAt?.seconds || 0;
@@ -148,8 +152,9 @@ class FirestoreService {
 
   async getWatchlistItems(userId = getCurrentUser()?.uid) {
     if (!userId) return [];
-    const snapshot = await getDocs(collection(db, "watchlists"));
-    return snapshot.docs.map(mapDoc).filter((item) => item.userId === userId).sort(
+    const q = query(collection(db, "watchlists"), where("userId", "==", userId));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(mapDoc).sort(
       (a, b) => {
         const aTime = a.createdAt?.seconds || 0;
         const bTime = b.createdAt?.seconds || 0;
