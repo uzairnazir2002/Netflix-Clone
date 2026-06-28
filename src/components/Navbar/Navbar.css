@@ -88,9 +88,27 @@
     width: 200px;
 }
 
+.search-input:not(.active) {
+    opacity: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+}
+
 .search-form {
     display: flex;
     align-items: center;
+    gap: 8px;
+}
+
+.search-icon-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .search-icon {

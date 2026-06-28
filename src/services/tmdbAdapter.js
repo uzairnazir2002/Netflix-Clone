@@ -14,7 +14,9 @@ export class TMDBAdapter {
   }
 
   static toCardList(rawResults) {
-    return rawResults.map((item) => this.toCardItem(item));
+    return rawResults
+      .filter((item) => item.media_type !== 'person')
+      .map((item) => this.toCardItem(item));
   }
 
   static toTrailerModel(rawResults) {

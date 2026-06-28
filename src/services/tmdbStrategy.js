@@ -23,6 +23,39 @@ export class TMDBCategoryStrategy extends TMDBStrategy {
   }
 }
 
+export class TMDBLanguageStrategy extends TMDBStrategy {
+  async fetch({ language }) {
+    const options = getTMDBOptions();
+    const request = TMDBRequestFactory.createRequest('language', { language });
+
+    const response = await fetch(request.endpoint, options);
+    if (!response.ok) {
+      throw new Error(`TMDB language request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    return TMDBAdapter.toCardList(data.results || []);
+  }
+}
+
+export class TMDBSearchStrategy extends TMDBStrategy {
+  async fetch({ query }) {
+    const trimmedQuery = String(query || '').trim();
+    if (!trimmedQuery) return [];
+
+    const options = getTMDBOptions();
+    const request = TMDBRequestFactory.createRequest('search', { query: trimmedQuery });
+
+    const response = await fetch(request.endpoint, options);
+    if (!response.ok) {
+      throw new Error(`TMDB search request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    return TMDBAdapter.toCardList(data.results || []);
+  }
+}
+
 export class TMDBTrailerStrategy extends TMDBStrategy {
   async fetch({ id }) {
     const options = getTMDBOptions();

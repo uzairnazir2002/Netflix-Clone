@@ -85,10 +85,23 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      toast.info(`Searching for: "${searchQuery}"`);
+      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
       setSearchActive(false);
-      // TODO: Implement actual search functionality
+      setShowNotifications(false);
+    }
+  };
+
+  const activateSearch = () => {
+    setSearchActive(true);
+  };
+
+  const submitSearchFromIcon = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery('');
+      setSearchActive(false);
+      setShowNotifications(false);
     }
   };
 
@@ -122,23 +135,31 @@ const Navbar = () => {
       <div className='navbar_right'>
         {/* Search Box */}
         <div className='search-container'>
-          <input
-            type="text"
-            placeholder="Titles, people, genres"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={handleSearchKeyDown}
-            className={`search-input ${searchActive ? 'active' : ''}`}
-            aria-label="Search movies and shows"
-          />
           <form onSubmit={handleSearch} className='search-form'>
-            <img
-              src={searchIcon}
-              alt="search"
-              title="Search"
-              onClick={() => setSearchActive(!searchActive)}
-              className='search-icon'
-            />
+            {searchActive && (
+              <input
+                type="text"
+                placeholder="Titles, people, genres"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearchKeyDown}
+                className={`search-input ${searchActive ? 'active' : ''}`}
+                aria-label="Search movies and shows"
+              />
+            )}
+            <button
+              type="button"
+              className="search-icon-button"
+              onClick={searchActive ? submitSearchFromIcon : activateSearch}
+              aria-label="Search"
+            >
+              <img
+                src={searchIcon}
+                alt=""
+                title="Search"
+                className='search-icon'
+              />
+            </button>
           </form>
         </div>
 

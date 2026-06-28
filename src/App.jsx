@@ -15,6 +15,7 @@ import Privacy from './pages/Privacy/Privacy'
 import CookiePreferences from './pages/CookiePreferences/CookiePreferences'
 import ContactUs from './pages/ContactUs/ContactUs'
 import Feedback from './pages/Feedback/Feedback'
+import SearchResults from './pages/SearchResults/SearchResults'
 import Jobs from './pages/Jobs/Jobs'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
@@ -114,6 +115,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <BrowseLanguages />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/search" 
+          element={
+            <ProtectedRoute user={user}>
+              <SearchResults />
             </ProtectedRoute>
           } 
         />
