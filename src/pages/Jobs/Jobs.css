@@ -1,0 +1,264 @@
+.jobs {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+.jobs-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.jobs-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.jobs-header h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.jobs-header p {
+  font-size: 18px;
+  color: #999;
+}
+
+.jobs-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.benefit-card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.benefit-card:hover {
+  border-color: #e50914;
+  transform: translateY(-5px);
+}
+
+.benefit-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.benefit-card p {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+}
+
+.jobs-list {
+  margin-bottom: 60px;
+}
+
+.jobs-list h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.job-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+
+.job-card:hover {
+  border-color: #e50914;
+  background: #222;
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.job-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.job-type {
+  background: #e50914;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.job-description {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.job-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.meta-item {
+  font-size: 13px;
+  color: #999;
+}
+
+.apply-btn {
+  padding: 10px 20px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+
+.apply-btn:hover {
+  background: #c4070a;
+  transform: scale(1.05);
+}
+
+.company-culture {
+  background: #1a1a1a;
+  padding: 60px 40px;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.company-culture h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.culture-item {
+  text-align: center;
+}
+
+.culture-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #e50914;
+  font-weight: 600;
+}
+
+.culture-item p {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.jobs-cta {
+  text-align: center;
+  background: linear-gradient(135deg, #e50914 0%, #831010 100%);
+  padding: 50px 40px;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.jobs-cta h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.jobs-cta p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #fff;
+  color: #e50914;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .jobs-container {
+    margin: 40px auto;
+  }
+
+  .jobs-header h1 {
+    font-size: 36px;
+  }
+
+  .jobs-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .company-culture {
+    padding: 40px 20px;
+  }
+
+  .jobs-cta {
+    padding: 40px 20px;
+  }
+}
